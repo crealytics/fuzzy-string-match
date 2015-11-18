@@ -16,6 +16,7 @@
 #   limitations under the License.
 #
 require 'fuzzystringmatch/pure'
+require 'fuzzystringmatch/java'
 
 module FuzzyStringMatch
   class JaroWinkler
@@ -26,8 +27,7 @@ module FuzzyStringMatch
 
       when :native
         if RUBY_PLATFORM == "java"
-          STDERR.puts "fuzzy-string-match Warning: native version is disabled on java platform. falled back to pure ruby version..."
-          FuzzyStringMatch::JaroWinklerPure.new
+          FuzzyStringMatch::JaroWinklerJava.new
         else
           begin
             require 'fuzzystringmatch/inline'
